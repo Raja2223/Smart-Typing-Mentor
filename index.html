@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Smart Typing Mentor</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <header>
+      <h1>Smart Typing Mentor</h1>
+      <p class="subtitle">Analyze your typing speed, accuracy & hesitation. Get personalized practice.</p>
+    </header>
+
+    <main>
+      <!-- Test Settings -->
+      <section class="card settings">
+        <h2>1. Choose or Enter Text</h2>
+        <div class="preset-list">
+          <button class="preset-btn" data-text="The quick brown fox jumps over the lazy dog.">
+            Classic pangram
+          </button>
+          <button class="preset-btn" data-text="Typing practice helps improve speed and accuracy over time.">
+            Practice sentence
+          </button>
+          <button class="preset-btn" data-text="Programming in C plus plus and JavaScript requires logic and precision.">
+            Programming sentence
+          </button>
+        </div>
+        <textarea id="targetText" rows="3"
+          placeholder="Or type/paste your own text here..."></textarea>
+        <button id="startTestBtn" class="primary-btn">Start Test</button>
+      </section>
+
+      <!-- Typing Area -->
+      <section class="card typing">
+        <h2>2. Start Typing</h2>
+        <p id="testStatus" class="status status-idle">Status: Not started</p>
+        <textarea id="typingArea" rows="5"
+          placeholder="Click 'Start Test' and begin typing here..." disabled></textarea>
+        <div class="controls">
+          <button id="finishTestBtn" class="secondary-btn" disabled>Finish Test</button>
+          <button id="resetTestBtn" class="ghost-btn">Reset</button>
+        </div>
+      </section>
+
+      <!-- Results -->
+      <section class="card results">
+        <h2>3. Session Analysis</h2>
+        <div class="results-grid">
+          <div class="metric">
+            <span class="label">WPM</span>
+            <span id="wpm" class="value">0</span>
+          </div>
+          <div class="metric">
+            <span class="label">Accuracy</span>
+            <span id="accuracy" class="value">0%</span>
+          </div>
+          <div class="metric">
+            <span class="label">Avg Hesitation</span>
+            <span id="avgHesitation" class="value">0 ms</span>
+          </div>
+          <div class="metric">
+            <span class="label">Total Time</span>
+            <span id="timeTaken" class="value">0 s</span>
+          </div>
+        </div>
+
+        <div class="details">
+          <h3>Key Issues Detected</h3>
+          <ul id="issuesList">
+            <li>No data yet. Run a test.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Personalized Practice -->
+      <section class="card practice">
+        <h2>4. Personalized Practice</h2>
+        <p class="hint">
+          Generated from your **weak keys** & mistakes in your last session.
+        </p>
+        <textarea id="practiceText" rows="3" readonly></textarea>
+        <button id="loadPracticeBtn" class="secondary-btn">Load Practice as Target</button>
+      </section>
+
+      <!-- History -->
+      <section class="card history">
+        <h2>Typing History (Local)</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>WPM</th>
+              <th>Accuracy</th>
+              <th>Avg Hesitation (ms)</th>
+              <th>Time (s)</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+          <tbody id="historyTableBody">
+            <tr><td colspan="6">No sessions yet.</td></tr>
+          </tbody>
+        </table>
+      </section>
+    </main>
+
+    <footer>
+      <p>Built for learning: Smart Typing Mentor</p>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
